@@ -9,7 +9,7 @@ internal class Program
         // 7a
         
         var grupirajPremaBanci = Podaci.ListaKlijenata
-            .Where(x => x.Stanje > 1000000)
+            .Where(x => x.Stanje >= 1000000)
             .GroupBy(x => x.Banka)
             .Select(x =>
             new GrupiraniMilijunasi(x.Key, x.Select(x => x.ImePrezime)));
@@ -30,7 +30,7 @@ internal class Program
         // 7c
 
         var izvjestajMilijunasa = Podaci.ListaKlijenata
-            .Where(x => x.Stanje > 1000000)
+            .Where(x => x.Stanje >= 1000000)
             .Join(Podaci.ListaBanki,
                 klijent => klijent.Banka,
                 banka => banka.Simbol,
